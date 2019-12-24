@@ -10,7 +10,7 @@ class GovementSpider(object):
         self.headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Safari/537.36"
         }
-        self.db = pymysql.connect('localhost', 'root', 'Lxd05230708', 'reptile_db', charset='utf8')
+        self.db = pymysql.connect('localhost', '***', '***', 'reptile_db', charset='utf8')
         self.cursor = self.db.cursor()
 
     # 提取二级页面链接(假链接)
@@ -37,22 +37,6 @@ class GovementSpider(object):
         real_link = pattern.findall(html)[0]
         self.get_data(real_link)
 
-        # 实现增量爬取
-        # 到version表中查询是否有real_link
-        # 有:数据最新  没有:抓数据
-#        self.cursor.execute('select * from version where link="{}"'.format(real_link))
-        # 不为空元组,链接已存在(不需要抓取数据)
-#        if self.cursor.fetchall():
-#            print('数据已是最新')
-#        else:
-            # 先抓取数据
-#            self.get_data(real_link)
-            # 把real_link链接插入到version表中
-#            ins = "insert into version values(%s)"
-#            self.cursor.execute(ins, [real_link])
-#            self.db.commit()
-#            print('数据已经成功存入数据库！')
-
     # 真正提取数据函数
     def get_data(self, real_link):
         html = requests.get(url=real_link, headers=self.headers).text
@@ -66,11 +50,11 @@ class GovementSpider(object):
             name = tr.xpath('./td[3]/text()')[0]
             print(code, name)
             self.save_sql(code,name)
-        
+
     def save_sql(self,code,name):
             self.cursor.execute("insert into version values(default,'%s','%s')"%(code,name))
             self.db.commit()
-        
+
     # 主函数
     def main(self):
         self.get_true_link()
