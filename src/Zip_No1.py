@@ -42,6 +42,7 @@ def selecfiles():
 
 
 # 2.压缩文件函数
+# 可以参考：https://www.jb51.net/article/146663.htm
 def zipfiles():
     global files
     # 获取压缩文件的路径
@@ -77,7 +78,9 @@ def uncompress():
     # 添加要压缩的文件(遍历操作
     # for onefiles in files:
     files1 = tkinter.filedialog.askdirectory(title='选择您要解压的路径')
-    zp.extractall(files1)
+    zplist = zp.namelist()
+    for f in zplist:
+        zp.extract(f, files1)
     zp.close()  # 解压完成
     # 提示用户压缩路径
     tkinter.messagebox.showinfo(title='操作结果', message='解压成功：'+files1)
