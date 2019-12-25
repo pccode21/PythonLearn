@@ -28,7 +28,7 @@ def selecfiles():
     # 声明全局变量
     global files
     # 使用文件对话框选择文件
-    files = tkinter.filedialog.askopenfilenames(title='选择你要解压缩的文件')
+    files = tkinter.filedialog.askopenfilenames(title='选择你要压缩的文件')
     # 显示选中文件的信息
     # 临时的路径容器
     tmpfiles = []
@@ -61,7 +61,7 @@ def uncompress():
     global files
 
     # 使用文件对话框选择文件
-    files = tkinter.filedialog.askopenfilenames(title='选择你要解压缩的文件')
+    files = tkinter.filedialog.askopenfilenames(title='选择你要解压的文件')
     # 显示选中文件的信息
     # 临时的路径容器
     tmpfiles = []
