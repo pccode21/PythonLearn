@@ -1,0 +1,4 @@
+首先，要关闭杀毒软件，关闭“控制面板\系统和安全\Windows Defender 防火墙”。
+执行exe文件，会弹出一个应用框，选择第一个“KMSAuto Net”，然后再选择“Information”里面的“windows”，最后选择“Activation”中的“windows”。等待执行完成，可以看到windows已激活
+
+cmd：slmgr -xpr 可以查看激活到期时间。
