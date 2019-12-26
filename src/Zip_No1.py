@@ -48,7 +48,15 @@ def zipfiles():
     # 获取压缩文件的路径
     filename = tkinter.filedialog.asksaveasfilename(title='保存文件', filetypes=(('zip 文件', '*.zip'), ('所有文件', '*.*')))
     # 新建压缩文件
-    zp = zipfile.ZipFile(filename + '.zip', 'a')              # 压缩文件默认zip格式
+    zp = zipfile.ZipFile(filename + '.zip', "w", zipfile.zlib.DEFLATED, allowZip64=True)
+    '''
+    压缩文件默认zip格式
+    "w"/"r"表示写或者读
+    zipfile.zlib.DEFLATED表示压缩格式
+    zipfile.ZIP_STORED表示存储格式
+    allowZip64=True这个参数是在处理大文件时使用的，默认为False。
+    如果没有设置为True而处理大文件时会提示 zip file size require ZIP64 extensions
+    '''
     # 添加要压缩的文件(遍历操作
     for onefiles in files:
         zp.write(onefiles, os.path.basename(onefiles))
@@ -153,10 +161,10 @@ labelg3.pack()
 canvas.create_window(515, 30, width=50, height=50, window=labelg3)
 
 # 4显示信息的组件
-label = tkinter.Label(root, compound='center', image=photo, textvariable=filenames, anchor='nw', justify='left')
+label = tkinter.Label(root, textvariable=filenames, anchor='nw', justify='left')
 label.pack()
 # label.place(x= 5,y = 115,width = '690',height = '370')
-canvas.create_window(100, 300, width=690, height=370, window=label)
+canvas.create_window(352, 280, width=700, height=370, window=label)
 
 
 root.mainloop()
