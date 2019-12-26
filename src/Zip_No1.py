@@ -119,11 +119,6 @@ allmenu.add_cascade(label='工具')
 
 root.config(menu=allmenu, bg='black')
 
-
-# 添加按钮界面
-# label = tkinter.Label(root, bg='#242424')
-# label.place(width=700, height=115)
-
 # 1.添加文件按钮
 btnadd = tkinter.Button(root, text='选择文件', bg='#242424', bd=0.5, fg='grey', command=selecfiles)
 # btnadd.place(x=100, y=70, width='80', height=30)
