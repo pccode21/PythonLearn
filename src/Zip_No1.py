@@ -156,10 +156,15 @@ labelg3.pack()
 canvas.create_window(515, 30, width=50, height=50, window=labelg3)
 
 # 4显示信息的组件
-label = tkinter.Label(root, textvariable=filenames, anchor='nw', justify='left')
+label = tkinter.Label(root,
+                    textvariable=filenames,
+                    anchor='nw',
+                    justify='left',
+                    font=("正文中楷",10),
+                    fg="white",
+                    bg='#99cc33')
 label.pack()
-# label.place(x= 5,y = 115,width = '690',height = '370')
-canvas.create_window(352, 280, width=700, height=370, window=label)
+canvas.create_window(352, 300, width=700, height=420, window=label)
 
 
 root.mainloop()
