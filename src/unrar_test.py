@@ -10,6 +10,8 @@ for f in rf_list:
 
 # Python 本身不支持 rar 文件的解压，需要先安装相关依赖才可使用
 # 安装 unrar 模块：pip install unrar
+# 如果上面的步骤不能安装，那就到“https://pypi.org/”下载unrar的压缩包，
+# 将压缩包解压到Python的Lib\site-packages文件夹下，然后使用“python setup.py build”和“python setup.py install”进行安装
 # 下载安装 unrar library，网址：http://www.rarlab.com/rar/UnRARDLL.exe 按照默认安装路径安装
 # 将安装后文件夹中的 X64 文件夹加入环境变量（默认路径为 C:\Program Files (x86)\UnrarDLL\x64）
 # 将C:\Program Files (x86)\UnrarDLL和C:\Program Files (x86)\UnrarDLL\x64目录下的两个文件都改为unrar.dll和unrar.lib
