@@ -6,7 +6,7 @@ import re
 import codecs
 
 r = requests.get('http://zq.win007.com/jsData/teamInfo/teamDetail/tdl1419.js')
-tmp = r.content
+tmp = r.text
 m = re.findall(r"(\[\d{7}.*.\];)", tmp)[0]
 m = m.split('],[')
 for i in m:

@@ -8,8 +8,8 @@ import codecs
 team_code = "26"
 
 r = requests.get('http://zq.win007.com/jsData/teamInfo/teamDetail/tdl' + team_code  + '.js')
-tmp = r.content
-m = re.findall(r"(\[\d{7}.*.\];)", tmp.decode('gbk'))[0]
+tmp = r.text
+m = re.findall(r"(\[\d{7}.*.\];)", tmp)[0]
 m = m.split('],[')
 csv_header = ["fouls", "yellow_cards", "red_cards", "possession_rate", "shots", "shot_on target", "passing", "passing_success", "passing_success_rate",  "crossing", "corners", "offside", "unkown", "head", "head_success", "save", "slide_tackle", "shot_out_of target", "blocked_shots", "thorw-in", "stars", "hometeam", "funny_rating"]
 with open(team_code + ".csv", "a+") as f:
