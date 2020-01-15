@@ -6,8 +6,8 @@ import re
 import codecs
 
 r = requests.get('http://zq.win007.com/jsData/teamInfo/teamDetail/tdl1419.js')
-tmp = r.text
-m = re.findall(r"(\[\d{7}.*.\];)", tmp)[0]
+tmp = r.content
+m = re.findall(r"(\[\d{7}.*.\];)", tmp.decode("utf-8"))[0]
 m = m.split('],[')
 for i in m:
     i = re.sub(r"\^.*?'", "", i)
