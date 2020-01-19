@@ -10,7 +10,7 @@ class GovementSpider(object):
         self.headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Safari/537.36"
         }
-        self.db = pymysql.connect('localhost', '***', '***', 'reptile_db', charset='utf8')
+        self.db = pymysql.connect('localhost', 'root', 'Lxd05230708', 'spider', charset='utf8')
         self.cursor = self.db.cursor()
 
     # 提取二级页面链接(假链接)
@@ -49,10 +49,11 @@ class GovementSpider(object):
             # name: ./td[3]/text()
             name = tr.xpath('./td[3]/text()')[0]
             print(code, name)
-            self.save_sql(code,name)
+            self.save_sql(code, name)
 
-    def save_sql(self,code,name):
-            self.cursor.execute("insert into version values(default,'%s','%s')"%(code,name))
+    def save_sql(self, code, name):
+            self.cursor.execute("insert into version values(default, '%s', '%s')" % (code, name))
+            # 数据表中id要设置成 `id` INT NOT NULL AUTO_INCREMENT 和 PRIMARY KEY (`id`)
             self.db.commit()
 
     # 主函数
@@ -60,6 +61,7 @@ class GovementSpider(object):
         self.get_true_link()
         self.cursor.close()
         self.db.close()
+
 
 if __name__ == "__main__":
     spider = GovementSpider()

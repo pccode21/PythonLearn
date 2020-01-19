@@ -15,6 +15,7 @@ def get_teamlink(url):
     team_list = {}
     for x in range(len(team)):
         team_list[str(team[x].string)] = str('http://match.sports.sina.com.cn/football/'+team[x].attrs['href'])
+        # 将球队名称和球队链接连接起来，'球队名称':'球队链接'
         print(team_list)
     return (team_list)
 
