@@ -6,17 +6,15 @@ from pyquery import PyQuery
 # 获取请求头信息
 headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"}
 # 发送get请求并获取请求的文本字符串
-for i in range(1, 101):
-    url = "https://www.gushiwen.org/default_"+str(i)
+for i in range(1, 11):
+    url = "https://www.gushiwen.org/default_"+str(i)+".aspx"
     print('正在爬取的链接为：%s' % url)
     response = requests.get(url=url, headers=headers)
     print('正在获取第 %d 页' % i)
     # 将获取的文本字符串转换为PyQuery对象
     doc = PyQuery(response.text)
-    num = 0
     # 循环遍历，使用css选择器并调用items()方法生成迭代器
     for item in doc(".cont").items():
-        num += 1
         # 调用find()方法并采用css选择器中的标签选择获取标题。
         title = item.find("p b").text()
     # 获取结果类型为字符串，可以调用split()方法进行分割。分割之后为列表类型
@@ -30,7 +28,6 @@ for i in range(1, 101):
         author = contents[2]
     # 调用children()方法并采用css选择器中的标签选择获取文本内容
         text = item.children(".contson").text()
-        print('当前页面古诗共 %s 首' % num)
     # f = open("poetry.txt", "a", encoding="utf-8")
     # f.write("\n".join([title, dynasty, author, text]))
     # f.write("\n" + "=" * 100 + "\n")
