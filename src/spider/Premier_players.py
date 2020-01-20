@@ -56,7 +56,7 @@ time.sleep(2)
 
 def get_player_list(list, playerListURL):
     for i in list:
-        i = 24
+        i = 19  # 由于批量爬取出错，只能一队队爬取,19代表阿森纳
         time.sleep(2)
         headers = {
                     'Referer': 'http://zq.win007.com/cn/team/PlayerData/{}.html'.format(i),
@@ -84,7 +84,7 @@ def get_player_info(player_list, playInfoURL):
     for player in player_list:
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36'}
         try:
-            url = playInfoURL + 'PlayerID={}&TeamID=24'.format(player)
+            url = playInfoURL + 'PlayerID={}&TeamID=19'.format(player)  # 由于批量爬取出错，只能一队队爬取，19代表阿森纳
             response = requests.get(url, headers=headers)
             doc = PyQuery(response.text)
             table = doc('.tdlink')
