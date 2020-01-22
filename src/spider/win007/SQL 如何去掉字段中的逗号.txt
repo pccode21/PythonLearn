@@ -1,0 +1,1 @@
+UPDATE spider.football_player SET EngName=REPLACE(EngName,',','');

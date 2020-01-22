@@ -35,4 +35,8 @@ plt.barh(countries, popularity)  # barh()表示绘制水平方向的条形图
 plt.title('英超球员国籍比例', fontproperties=zh_font)
 plt.xlabel('人数', fontproperties=zh_font)
 plt.tight_layout()
+plt.Figure()  # 创建自定义图像
+thismanager = plt.get_current_fig_manager()
+thismanager.window.wm_iconbitmap(r'./PythonLearn/src/spider/win007/LOGO.ico')
+thismanager.canvas.set_window_title('足球心经的可视化图表')
 plt.show()
