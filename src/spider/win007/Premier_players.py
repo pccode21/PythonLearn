@@ -75,7 +75,8 @@ def get_player_list(list, playerListURL):
             try:
                 player_id = i[0]
                 player_id_list.append(player_id)
-            except:
+            except Exception as e:
+                raise Exception(e)
                 continue
         return player_id_list
 

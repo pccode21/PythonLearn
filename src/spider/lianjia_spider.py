@@ -82,7 +82,8 @@ def get_house_info(list):
             cursor.execute(sql_insert, insert_data)
             conn.commit()
             print(i, '：写入完成')
-        except:
+        except Exception as e:
+            raise Exception(e)
             print(i, '：写入异常')
             continue
 

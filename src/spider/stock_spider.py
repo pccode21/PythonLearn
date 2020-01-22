@@ -37,7 +37,8 @@ def get_stock_list(stockListURL):
             list.append(re.findall(r'\d{6}', href)[0])
             # r'\d{6}'表示提取href中的6个数字
             # re.findall提取出的信息是列表存储的，[0]即是将列表中的第一个数据从列表中提出来
-        except:
+        except Exception as e:
+            raise Exception(e)
             continue
     # list = [item.lower() for item in list]  # 将爬取信息转换小写
     return list

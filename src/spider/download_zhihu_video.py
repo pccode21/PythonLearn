@@ -31,16 +31,18 @@ class DownloadVideo:
     def get_video_number(self):
         try:
             headers = {
-                'User-Agent':
-                'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36'
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36'
             }
             response = requests.get(self.url, headers=headers)
             response.encoding = 'utf-8'
             html = response.text
+            print(html)
             video_ids = re.findall(r'data-lens-id="(\d+)"', html)
+            print(video_ids)
             if video_ids:
                 video_id_list = list(set([video_id for video_id in video_ids]))
                 self.video_number = video_id_list[0]
+                print(self.video_number)
                 return self
             raise ValueError("获取视频编号异常:{}".format(self.url))
         except Exception as e:
@@ -48,21 +50,20 @@ class DownloadVideo:
 
     def get_video_url_by_number(self):
         url = "{}/{}".format(self.video_api, self.video_number)
-
-        headers = {}
-        headers['Referer'] = 'https://v.vzuu.com/video/{}'.format(
-            self.video_number)
-        headers['Origin'] = 'https://v.vzuu.com'
-        headers[
-            'User-Agent'] = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36'
-        headers['Content-Type'] = 'application/json'
-
+        print(url)
+        headers = {
+                    'Referer': 'https://v.vzuu.com/video/{}'.format(self.video_number),
+                    'Origin': 'https://v.vzuu.com',
+                    'Content-Type': 'application/json',
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36'
+        }
         try:
             response = requests.get(url, headers=headers)
+            print(response.text)
             response_dict = response.json()
+            print(response_dict)
             if self.clarity in response_dict['playlist']:
-                self.download_url = response_dict['playlist'][
-                    self.clarity]['play_url']
+                self.download_url = response_dict['playlist'][self.clarity]['play_url']
             else:
                 for clarity in self.clarity_list:
                     if clarity in response_dict['playlist']:
@@ -79,7 +80,7 @@ class DownloadVideo:
         if self.video_name is not None:
             video_name = "{}-{}.mp4".format(self.video_name, datetime_str)
         else:
-            video_name = "{}-{}.mp4".format(str(uuid.uuid1()), datetime_str)
+            video_name = "{}-{}.mp4".format(str(uuid.uuid1()), datetime_str)  # uuid.uuid1()生成基于计算机主机ID和当前时间的UUID
         path = r"./PythonLearn/src/spider/{}".format(video_name)
         with open(path, 'wb') as f:
             f.write(response.content)
