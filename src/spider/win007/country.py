@@ -12,7 +12,7 @@ print(data)
 # 设置rc参数显示中文标题
 plt.rcParams['font.family'] = ['sans-serif']  # 设置字体样式
 plt.rcParams['font.sans-serif'] = ['SimHei']  # 设置字体为SimHei显示中文
-countrys = data['nationality']
+countrys = data['price']
 # 定义一个Counter
 # 用来统计国家分类的总数
 country_counter = Counter()
@@ -32,7 +32,7 @@ zh_font = font_manager.FontProperties(fname='C:\\Windows\\Fonts\\simhei.ttf')
 # 使用横向条形图表
 plt.yticks(fontsize=8)  # 设置y轴字体大小
 plt.barh(countries, popularity)  # barh()表示绘制水平方向的条形图
-plt.title('西甲球员国籍比例', fontproperties=zh_font)
+plt.title('西甲球员身价比例', fontproperties=zh_font)
 plt.xlabel('人数', fontproperties=zh_font)
 plt.tight_layout()
 plt.Figure()  # 创建自定义图像
