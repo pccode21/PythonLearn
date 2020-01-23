@@ -62,4 +62,4 @@ driver.save_screenshot('aiqiyi_test.png')
 
 driver.close()
 driver.quit()
-print 'game over'
+print('ame over')

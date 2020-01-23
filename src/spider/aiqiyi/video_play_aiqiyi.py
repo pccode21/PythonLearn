@@ -12,7 +12,7 @@ class video_play_aiqiyi:
     def __init__(self, driver):
         self.driver = driver
         #查找必要的控件
-        print 'aiqiyi begin to find element'
+        print('aiqiyi begin to find element')
         self.video = self.driver.find_element_by_xpath('//video')
         self.video_start = self.driver.find_element_by_xpath('//*[@id="iqp-svg-pause"]')
         self.video_progress_bar = self.driver.find_element_by_xpath('/html/body/div[1]/div/div/div/div/div/div[1]/iqpdiv/iqpdiv[1]/iqpdiv[2]/iqpdiv/iqpdiv[2]/iqpdiv')
@@ -25,7 +25,7 @@ class video_play_aiqiyi:
         self.definition_GaoQing = self.driver.find_element_by_xpath('//iqpspan[@data-player-hook="vip_definition_2"]')
         self.definition_LiuChang = self.driver.find_element_by_xpath('//iqpspan[@data-player-hook="vip_definition_1"]')
         self.definition_JiSu = self.driver.find_element_by_xpath('//iqpspan[@data-player-hook="vip_definition_96"]')
-        print 'has find all the elements'
+        print('has find all the elements')
 
     def play(self, definition_aiqiyi):
         self.set_definition(definition_aiqiyi)
@@ -52,8 +52,8 @@ class video_play_aiqiyi:
             ActionChains(self.driver).click(self.definition_LiuChang).perform()
         elif definition_aiqiyi == 'JiSu':
             ActionChains(self.driver).click(self.definition_JiSu).perform()
-        else :
-            print 'param unvalid'
+        else:
+            print('param unvalid')
         time.sleep(1)
 
     def reset_progress(self):
@@ -80,4 +80,4 @@ if __name__ == "__main__":
     test = video_play_aiqiyi(driver)
     time.sleep(35)
     test.play("GaoQing")
-    print 'video_play_aiqiyi test over'
+    print('video_play_aiqiyi test over')
