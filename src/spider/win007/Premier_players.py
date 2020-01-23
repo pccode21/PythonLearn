@@ -6,16 +6,16 @@ import pymysql
 
 
 url_time = time.strftime('%Y%m%d%H%M%S')
-team_list_url = 'http://zq.win007.com/jsData/matchResult/2019-2020/s36.js?version='+url_time
+team_list_url = 'http://zq.win007.com/jsData/matchResult/2019-2020/s31.js?version='+url_time
 player_list_url = 'http://zq.win007.com/jsData/teamInfo/teamDetail/'
 player_info_url = 'http://zq.win007.com/cn/team/player.aspx?'
 headers = {
             'Host': 'zq.win007.com',
-            'Referer': 'http://zq.win007.com/cn/League/2019-2020/36.html',  # 需要加入跳转网页
+            'Referer': 'http://zq.win007.com/cn/League/2019-2020/31.html',  # 需要加入跳转网页
             'Connection': 'close',
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36'
             }
-sql_insert = "insert into football_player(SimpName, EngName, TradName, price, birthday, weight, height, IdioFoot, nationality, contract) values (%(jiantiming)s, %(yingwenming)s, %(fantiming)s, %(yujishenjia)s, %(shengri)s, %(tizhong)s, %(shengao)s, %(guanyongjiao)s, %(guoji)s, %(hetongjiezhiqi)s)"
+sql_insert = "insert into lfp_player(SimpName, EngName, TradName, price, birthday, weight, height, IdioFoot, nationality, contract) values (%(jiantiming)s, %(yingwenming)s, %(fantiming)s, %(yujishenjia)s, %(shengri)s, %(tizhong)s, %(shengao)s, %(guanyongjiao)s, %(guoji)s, %(hetongjiezhiqi)s)"
 
 
 def connect():
@@ -56,7 +56,7 @@ time.sleep(2)
 
 def get_player_list(list, playerListURL):
     for i in list:
-        i = 19  # 由于批量爬取出错，只能一队队爬取,19代表阿森纳
+        i = 992  # 由于批量爬取出错，只能一队队爬取,19代表阿森纳
         time.sleep(2)
         headers = {
                     'Referer': 'http://zq.win007.com/cn/team/PlayerData/{}.html'.format(i),
@@ -85,7 +85,7 @@ def get_player_info(player_list, playInfoURL):
     for player in player_list:
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36'}
         try:
-            url = playInfoURL + 'PlayerID={}&TeamID=19'.format(player)  # 由于批量爬取出错，只能一队队爬取，19代表阿森纳
+            url = playInfoURL + 'PlayerID={}&TeamID=992'.format(player)  # 由于批量爬取出错，只能一队队爬取，19代表阿森纳
             response = requests.get(url, headers=headers)
             doc = PyQuery(response.text)
             table = doc('.tdlink')
