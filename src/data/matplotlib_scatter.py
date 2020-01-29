@@ -27,5 +27,6 @@ thismanager = plt.get_current_fig_manager()
 thismanager.window.wm_iconbitmap(r'./PythonLearn/src/spider/win007/LOGO.ico')
 thismanager.canvas.set_window_title('足球心经的可视化图表')
 # plt.grid(True)  # 设置网格线
+plt.savefig(r'./PythonLearn/src/data/images/scatter1.png')  # 保存图片
 # 显示
 plt.show()
