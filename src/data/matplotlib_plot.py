@@ -18,6 +18,7 @@ matplotlib.rc('font', **font)
 # 当刻度太密集的时候使用列表的步长（间隔取值）来解决，matplotlib会帮助我们对应
 # plt.xticks(range(1, 25))
 # plt.xlim(1, 25)  # 设置x范围
+# plt.ylim(1, 120) # 设置y范围
 # x_ticks = np.arange(1, 13, 1)  # 设置x刻度
 # plt.xticks(x_ticks)
 # _xticks_labels = [i/2 for i in range(4, 49)]  # 设置x间隔为0.5
@@ -28,7 +29,10 @@ a = [random.randint(20, 35) for i in range(120)]
 y = a
 random.seed(10)
 plt.rcParams['figure.figsize'] = (7.0, 6.5)  # 图片像素
-plt.plot(x, y, linewidth=1, color='green', label='random')  # plot是曲线图，linewidth指定线条粗细
+# plt.subplot(1, 2, 1)  #建立一个高为1，宽为2的subplot网格，激活第一个网格
+plt.plot(x, y, linewidth=1, color='green', label='random', linestyle='--')
+# plot是曲线图，linewidth指定线条粗细
+# 添加虚线样式：linestyle，linestyle取值：':'、'--'、'-.'、'-'
 plt.title('曲线图', fontsize=9)  # 设置标题
 plt.xlabel('时间', fontsize=9)  # 设置x轴标签说明
 plt.ylabel('随机数值', fontsize=9)  # 设置y轴标签说明

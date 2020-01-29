@@ -11,7 +11,9 @@ n = 50  # 50个随机数
 x = np.random.normal(0, 1, n)  # 平均值为0，方差为1
 y = np.random.normal(0, 1, n)
 # 散点
-plt.scatter(x, y, linewidth=2, color='blue', label='scatter', alpha=0.5, marker='*')  # scatter是散点图
+plt.scatter(x, y, linewidth=2, color='blue', label='scatter', alpha=0.5, marker='^')
+# scatter是散点图
+# alpha：透明属性，默认为1，取值范围大于等于0小于等于1，值越小透明度越高
 plt.legend()  # 添加图例
 # 设置标题
 plt.title("散点图", fontsize=12)
