@@ -10,12 +10,13 @@ from email.header import Header  # 用于构建邮件头
 
 
 # 有货通知 收件邮箱
-mail = 'pccode21@gmail.com'
+# mail = 'pccode21@gmail.com'  # 发送邮件给一个人
+mail = ['pccode21@gmail.com,115879465@qq.com,1062306617@qq.com,16007005@qq.com']  # 发送邮件给多人，以列表的方式给出
 # 商品的url
 url = [
     'https://c0.3.cn/stock?skuId=100011293950&area=19_1709_20093_51445&venderId=1000078145&buyNum=1&choseSuitSkuIds=&cat=9192,12190,1517&extraParam={%22originid%22:%221%22}&fqsp=0&pdpin=&pduid=297418411&ch=1&callback=jQuery9224214',
-    'https://c0.3.cn/stock?skuId=100006248245&area=19_1709_20093_51445&venderId=1000078145&buyNum=1&choseSuitSkuIds=&cat=9192,12190,1517&extraParam={%22originid%22:%221%22}&fqsp=0&pdpin=&pduid=297418411&ch=1&callback=jQuery9224214',
-    'https://c0.3.cn/stock?skuId=29054001796&area=19_1709_20093_51445&venderId=672329&buyNum=1&choseSuitSkuIds=&cat=9192,12190,1517&extraParam={%22originid%22:%221%22}&fqsp=0&pdpin=&pduid=297418411&ch=1&callback=jQuery753249',
+    'https://c0.3.cn/stock?skuId=65429632118&area=19_1709_20093_51445&venderId=1000078145&buyNum=1&choseSuitSkuIds=&cat=9192,12190,1517&extraParam={%22originid%22:%221%22}&fqsp=0&pdpin=&pduid=297418411&ch=1&callback=jQuery9224214',
+    'https://c0.3.cn/stock?skuId=56897291637&area=19_1709_20093_51445&venderId=672329&buyNum=1&choseSuitSkuIds=&cat=9192,12190,1517&extraParam={%22originid%22:%221%22}&fqsp=0&pdpin=&pduid=297418411&ch=1&callback=jQuery753249',
     'https://c0.3.cn/stock?skuId=100011293952&area=19_1709_20093_51445&venderId=1000078145&buyNum=1&choseSuitSkuIds=&cat=9192,12190,1517&extraParam={%22originid%22:%221%22}&fqsp=0&pdpin=&pduid=297418411&ch=1&callback=jQuery9224214']
 
 
@@ -35,7 +36,8 @@ def sendMail(url):
 
     # 邮件头信息
     msg['From'] = Header(from_addr)
-    msg['To'] = Header(to_addr)
+    # msg['To'] = Header(to_addr)  # 邮件上显示一个收件人
+    msg['To'] = ','.join(to_addr)  # 邮件上显示的多个收件人
     msg['Subject'] = Header('有口罩啦')
 
     # 开启发信服务，这里使用的是加密传输
@@ -46,7 +48,8 @@ def sendMail(url):
     # 登录发信邮箱
     server.login(from_addr, password)
     # 发送邮件
-    server.sendmail(from_addr, to_addr, msg.as_string())
+    # server.sendmail(from_addr, to_addr, msg.as_string())  #填入邮件的相关信息并发送，收件人是一个人
+    server.sendmail(from_addr, msg['To'].split(','), msg.as_string())  # 填入邮件的相关信息并发送
     # 关闭服务器
     server.quit()
 
