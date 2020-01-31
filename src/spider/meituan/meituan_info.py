@@ -54,6 +54,7 @@ def get_id(areaid):
         write = csv.writer(f)
         for i in id_list:
             write.writerow(i)
+
     # 开始爬取第2页到最后一页
     offset = 0
     if totalcount > 15:
