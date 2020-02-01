@@ -2,7 +2,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.font_manager import FontProperties
+from pylab import mpl
 
+mpl.rcParams['font.sans-serif'] = ['SimHei']
 plt.style.use('ggplot')  # matplotlib> = 1.4，有一个新的样式模块，默认情况下具有 ggplot 样式
 # 定义字体
 font = FontProperties(fname=r'c:\windows\fonts\simsun.ttc', size=9)
@@ -12,7 +14,7 @@ ax3 = plt.subplot(2, 2, 3, projection='polar')
 ax4 = plt.subplot(2, 2, 4, projection='polar')
 
 ability_size = 6  # 这是极面图的y轴
-ability_label = [u'进攻', u'防守', u'盘带', u'速度', u'体力', u'射术']
+ability_label = [u'进攻', u'防守', u'盘带', u'速度', u'体力', u'射术']  # 加不加u都可以显示中文
 player = {
     'M': np.random.randint(size=ability_size, low=60, high=99),
     'H': np.random.randint(size=ability_size, low=60, high=99),
@@ -36,7 +38,8 @@ ax1.fill(theta, player['M'], 'r', alpha=0.3)
 # 设置坐标刻度
 ax1.set_xticks(theta)
 ax1.set_xticklabels(ability_label, y=0.1, FontProperties=font)
-ax1.set_title(u'梅西', FontProperties=font, color='r', size=20)
+ax1.set_yticks([20, 40, 60, 80, 100])
+ax1.set_title(u'梅西', FontProperties=font, color='r', size=20)  # 加不加u都可以显示中文
 
 player['H'] = np.append(player['H'], player['H'][0])
 ax2.plot(theta, player['H'], 'g')
@@ -44,7 +47,8 @@ ax2.fill(theta, player['H'], 'g', alpha=0.3)
 # 设置坐标刻度
 ax2.set_xticks(theta)
 ax2.set_xticklabels(ability_label, y=0.1, FontProperties=font)
-ax2.set_title(u'德容', FontProperties=font, color='g', size=20)
+ax2.set_yticks([20, 40, 60, 80, 100])
+ax2.set_title(u'德容', FontProperties=font, color='g', size=20)  # 加不加u都可以显示中文
 
 player['P'] = np.append(player['P'], player['P'][0])
 ax3.plot(theta, player['P'], 'b')
@@ -52,7 +56,8 @@ ax3.fill(theta, player['P'], 'b', alpha=0.3)
 # 设置坐标刻度
 ax3.set_xticks(theta)
 ax3.set_xticklabels(ability_label, y=0.1, FontProperties=font)
-ax3.set_title(u'布斯克茨', FontProperties=font, color='b', size=20)
+ax3.set_yticks([20, 40, 60, 80, 100])
+ax3.set_title(u'布斯克茨', FontProperties=font, color='b', size=20)  # 加不加u都可以显示中文
 
 player['Q'] = np.append(player['Q'], player['Q'][0])
 ax4.plot(theta, player['Q'], 'y')
@@ -60,7 +65,8 @@ ax4.fill(theta, player['Q'], 'y', alpha=0.3)
 # 设置坐标刻度
 ax4.set_xticks(theta)
 ax4.set_xticklabels(ability_label, y=0.1, FontProperties=font)
-ax4.set_title(u'卡塞米罗', FontProperties=font, color='y', size=20)
+ax4.set_yticks([20, 40, 60, 80, 100])
+ax4.set_title(u'卡塞米罗', FontProperties=font, color='y', size=20)  # 加不加u都可以显示中文
 plt.tight_layout()  # 设置自动调整子图这间的间隔
 plt.Figure(figsize=(10, 10), dpi=80)
 # 创建自定义图像
