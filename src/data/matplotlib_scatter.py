@@ -27,7 +27,7 @@ plt.Figure(figsize=(10, 10), dpi=80)
 # 在图像模糊的时候，可以传入dpi参数，让图片更加清晰
 thismanager = plt.get_current_fig_manager()
 thismanager.window.wm_iconbitmap(r'./PythonLearn/src/spider/win007/LOGO.ico')
-thismanager.canvas.set_window_title('足球心经的可视化图表')
+thismanager.canvas.set_window_title('林旭东的可视化图表')
 # plt.grid(True)  # 设置网格线
 plt.savefig(r'./PythonLearn/src/data/images/scatter1.png')  # 保存图片
 # 显示
