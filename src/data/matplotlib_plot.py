@@ -30,7 +30,7 @@ y = a
 random.seed(10)
 plt.rcParams['figure.figsize'] = (7.0, 6.5)  # 图片像素
 # plt.subplot(1, 2, 1)  #建立一个高为1，宽为2的subplot网格，激活第一个网格
-plt.plot(x, y, linewidth=1, color='green', label='random', linestyle='--')
+plt.plot(x, y, linewidth=1, color='green', label='随机数', linestyle='--')
 # plot是曲线图，linewidth指定线条粗细
 # 添加虚线样式：linestyle，linestyle取值：':'、'--'、'-.'、'-'
 plt.title('曲线图', fontsize=9)  # 设置标题
