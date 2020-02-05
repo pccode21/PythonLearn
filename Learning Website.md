@@ -54,3 +54,7 @@
 2、深度开源 https://www.open-open.com/  <br>
 3、hellogithub https://hellogithub.com/  <br>
 4、开源镜像站 https://mirrors.tuna.tsinghua.edu.cn/  <br>
+
+八、学习文档
+----------------------------
+1、seaborn 0.9 中文文档 https://seaborn.apachecn.org/#/  <br>
