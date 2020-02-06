@@ -58,3 +58,4 @@
 八、学习文档
 ----------------------------
 1、seaborn 0.9 中文文档 https://seaborn.apachecn.org/#/  <br>
+2、pyecharts 中文文档 https://pyecharts.org/#/zh-cn/intro <br>
