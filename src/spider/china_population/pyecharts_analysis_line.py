@@ -37,9 +37,11 @@ def analysis_total():  # 分析总人口
             y_axis=y_data,  # 系列数据
             is_smooth=True,  # 是否平滑曲线
             is_symbol_show=True,  # 是否显示 symbol标记
-            symbol="circle",
-            # 标记的图形，
-            # ECharts 提供的标记类型包括 'circle', 'rect', 'roundRect', 'triangle','diamond', 'pin', 'arrow', 'none'
+            symbol="pin",
+            # 标记为圆针型，
+            # symbol='path://M100,200 C100,100 250,100 250,200 S400,300 400,200',
+            # svg图引入,svg图用notepad++软件或者记事本打开，将d属性值复制出来前面加path://即可
+            # ECharts 提供的标记类型包括 'circle'圆, 'rect'正方, 'roundRect'圆正方, 'triangle'三角,'diamond'菱形, 'pin'圆针, 'arrow'箭头, 'none'
             # 可以通过 'image://url' 设置为图片，其中 URL 为图片的链接，或者 dataURI
             symbol_size=5,
             # 标记的大小，可以设置成诸如 10 这样单一的数字，也可以用数组分开表示宽和高
