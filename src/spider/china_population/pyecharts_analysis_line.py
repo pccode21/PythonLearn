@@ -31,7 +31,8 @@ def analysis_total():  # 分析总人口
     # 自定义曲线图
     line = (
         Line(init_opts=opts.InitOpts(bg_color=JsCode(background_color_js)))  # 初始化配置项，参考 `global_options.InitOpts`
-            .add_xaxis(xaxis_data=x_data)
+            .add_xaxis(xaxis_data=['{:0>4d}'.format(s) for s in range(1949, 2020)])
+            # .add_xaxis(xaxis_data=x_data)
             .add_yaxis(
             series_name="总人口",
             y_axis=y_data,  # 系列数据
@@ -79,13 +80,13 @@ def analysis_total():  # 分析总人口
             ),
             # x轴相关的选项设置
             xaxis_opts=opts.AxisOpts(
-                type_="category",
+                type_="category",  # 'category' 类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
                 boundary_gap=False,
-                axislabel_opts=opts.LabelOpts(margin=30, color="#ffffff63"),
+                axislabel_opts=opts.LabelOpts(margin=30, color="#ffffff63"),  # rotate=-40设置x轴标标签旋转角度
                 axisline_opts=opts.AxisLineOpts(is_show=False),
                 axistick_opts=opts.AxisTickOpts(
                     is_show=True,
-                    length=25,
+                    length=25,  # x坐标轴刻度的长度
                     linestyle_opts=opts.LineStyleOpts(color="#ffffff1f"),
                 ),
                 splitline_opts=opts.SplitLineOpts(
@@ -94,8 +95,11 @@ def analysis_total():  # 分析总人口
             ),
             # y轴相关选项设置
             yaxis_opts=opts.AxisOpts(
-                type_="value",
+                name='人口（亿）',  # 设置y轴名称
+                type_="value",  # 'value' 数值轴，适用于连续数据。
+                # max_=16,  # 设置y轴最大取值范围
                 position="left",
+                interval=1,  # 设置y轴刻度间隔为1
                 axislabel_opts=opts.LabelOpts(margin=20, color="#ffffff63"),
                 axisline_opts=opts.AxisLineOpts(
                     linestyle_opts=opts.LineStyleOpts(width=0, color="#ffffff1f")
@@ -110,13 +114,13 @@ def analysis_total():  # 分析总人口
                 ),
             ),
             # 图例配置项相关设置
-            legend_opts=opts.LegendOpts(is_show=True, pos_left="10%", pos_top="5%"),
+            legend_opts=opts.LegendOpts(is_show=False, pos_left="10%", pos_top="5%"),
         )
     )
     make_snapshot(snapshot, line.render(), 'line.png')  # 输出保存为图片
-    #page = Page(layout=Page.DraggablePageLayout)  # DraggablePageLayout表示可拖拽
-    #page.add(line)
-    #page.render('population_total.html')  # 渲染图像，将图像显示在一个html中
+    # page = Page(layout=Page.DraggablePageLayout)  # DraggablePageLayout表示可拖拽
+    # page.add(line)
+    # page.render('population_total.html')  # 渲染图像，将图像显示在一个html中
 
 
 if __name__ == '__main__':
