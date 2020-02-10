@@ -1,16 +1,17 @@
-from wxpy import Bot, embed  # 微信机器人
+from wxpy import Bot, embed, ensure_one  # 微信机器人
 import os
 import codecs
 import json
 
+bot = Bot()
 sex_dict = {}
 sex_dict['0'] = "其他"
 sex_dict['1'] = "男"
 sex_dict['2'] = "女"
-message_dict = {
-    '手气最佳': '更多好玩的内容请关注朋友圈',
-    '你好': '你好啊，这条消息是自动回复的',
-    '备忘录': '这周开始早上要记得在部门群里上班打卡'}
+department_group = ensure_one(bot.groups().search('我们运维部'))
+# 通常可用在查找聊天对象时，确保查找结果的唯一性，并直接获取唯一项
+# 定位部门群
+manager = ensure_one(department_group.search(nick_name='龙'))  # 定位部门经理,nick_name(精准名称)
 
 
 def download_images(friend_list):  # 下载好友头像
@@ -29,24 +30,19 @@ def save_data(frined_list):
         json_file.write(json.dumps(frined_list, ensure_ascii=False))
 
 
-def print_content(msg):
-    NickName = msg['User']['NickName']
-    user = Bot.core.friends().search(name=NickName)[0]
-    text = msg['Text']
-    if text in message_dict.keys():
-        user.send(message_dict[text])
-    else:
-        user.send(u"你好啊%s,我目前还不支持这个功能" % NickName)
+@bot.register(department_group)  # 将部门经理的消息转发到文件传输助手
+def forward_manager_message(msg):
+    if msg.member == manager:
+        msg.forward(bot.file_helper, prefix='部门领导发言')
 
 
 if __name__ == '__main__':
-    bot = Bot()
     os.chdir(r'.\PythonLearn\src\spider\weixin')  # 指定工作路径
     if not os.path.exists('info/' + bot.self.name):
         # 判断在‘weixin’文件下是否存在文件夹‘info’和机器人账号自身名称的文件夹
-        filepath = os.getcwd()  # 获取工作路径
+        filepath = os.getcwd()  # 显示当前python脚本工作路径
         os.makedirs(filepath + '/info/' + bot.self.name + '/images')
-        # 在工作路径下创建文件夹‘info’、机器人账号自身名称的文件夹和‘images’文件夹
+        # 可生成多层递规目录，在工作路径下创建文件夹‘info’、机器人账号自身名称的文件夹和‘images’文件夹
     myfriends = bot.core.get_friends(update=True)[0:]  # 获取微信好友列表
     myfriends_list = []
     for myfriend in myfriends:
