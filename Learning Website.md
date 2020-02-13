@@ -61,3 +61,4 @@
 2、pyecharts 中文文档 https://pyecharts.org/#/zh-cn/intro <br>
 3、JSON 中文文档 http://www.json.org/json-zh.html <br>
 4、matplotlib 官网 https://matplotlib.org/index.html <br>
+5、wxpy官方文档：https://wxpy.readthedocs.io/zh/latest <br>
