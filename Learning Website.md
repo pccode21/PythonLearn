@@ -59,3 +59,5 @@
 ----------------------------
 1、seaborn 0.9 中文文档 https://seaborn.apachecn.org/#/  <br>
 2、pyecharts 中文文档 https://pyecharts.org/#/zh-cn/intro <br>
+3、JSON 中文文档 http://www.json.org/json-zh.html <br>
+4、matplotlib 官网 https://matplotlib.org/index.html <br>
