@@ -27,7 +27,7 @@ def download_images(friend_list):  # 下载好友头像
 def save_data(frined_list):
     out_file_name = 'data/myfriends.json'
     with codecs.open(out_file_name, 'w', encoding='utf-8') as json_file:
-        json_file.write(json.dumps(frined_list, ensure_ascii=False))
+        json_file.write(json.dumps(frined_list, ensure_ascii=False, indent=4))
 
 
 @bot.register(department_group)  # 将部门经理的消息转发到文件传输助手

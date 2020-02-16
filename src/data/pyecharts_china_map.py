@@ -9,7 +9,7 @@ os.chdir(r'.\PythonLearn\src\data\images')  # 创建工作路径
 timestamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
 
-def catch_cn_disease_dis():  # 获取全国确诊分布数据
+def catch_cn_disease_dis():  # 获取全国确诊分布数据 https://news.qq.com/zt2020/page/feiyan.htm
     print(timestamp)
     url_area = ('https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5&callback=&_=') + timestamp
     print(url_area)
@@ -43,12 +43,12 @@ def map_cn_disease_dis() -> Map:
                 is_piecewise=True,  # 是否为分段型
                 pos_top='center',
                 pieces=[
-                                                   {'min': 10000, 'color': '#7f1818'},  #不指定 max
-                                                   {'min': 1000, 'max': 10000},
-                                                   {'min': 500, 'max': 999},
-                                                   {'min': 100, 'max': 499},
-                                                   {'min': 10, 'max': 99},
-                                                   {'min': 0, 'max': 5}]
+                    {'min': 10000, 'color': '#7f1818'},  # 不指定 max
+                    {'min': 1000, 'max': 10000},
+                    {'min': 500, 'max': 999},
+                    {'min': 100, 'max': 499},
+                    {'min': 10, 'max': 99},
+                    {'min': 0, 'max': 5}]
             )
         )
     )
