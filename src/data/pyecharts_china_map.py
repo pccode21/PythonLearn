@@ -36,7 +36,7 @@ def map_cn_disease_dis() -> Map:
         .add('中国', ls_province_cfm, 'china')
         .set_global_opts(
             title_opts=opts.TitleOpts(title='全国新型冠状病毒疫情地图（确诊数）',
-            subtitle='林旭东的可视化图表\r\n最新更新时间%s\r\n数据来源腾讯' % format(timestamp)),
+            subtitle='数能工作室制作\r\n最新更新时间%s\r\n数据来源腾讯' % format(timestamp)),
             visualmap_opts=opts.VisualMapOpts(
                 is_show=True,
                 split_number=6,
@@ -89,7 +89,7 @@ def map_gd_disease_dis() -> Map:
         # 地图 : {a}（系列名称），{b}（区域名称），{c}（合并数值）, {d}（无）
         .set_global_opts(
             title_opts=opts.TitleOpts(title='广东省新型冠状病毒疫情地图（确诊数）',
-            subtitle='林旭东的可视化图表\r\n最新更新时间%s\r\n数据来源腾讯' % format(timestamp)),
+            subtitle='数能工作室制作\r\n最新更新时间%s\r\n数据来源腾讯' % format(timestamp)),
             visualmap_opts=opts.VisualMapOpts(
                 is_show=True,
                 split_number=6,
